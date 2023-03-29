@@ -13,7 +13,7 @@ export default function Edituser({user,setUser}){
     const [Experience,setExperience]=useState("")
 
     const {Id}=useParams();
-    const selecteduser=user.find((prsn,index)=>prsn.Id==Id);
+    const selecteduser=user.find((prsn,index)=>prsn.Id===Id);
     useEffect(() => {
         setIdx(selecteduser.Id)
         setName(selecteduser.Name)
@@ -21,12 +21,12 @@ export default function Edituser({user,setUser}){
         setBatch(selecteduser.Batch)
         setMail(selecteduser.Email)
         setExperience(selecteduser.Experience)
-    }, []);
+    }, [selecteduser]);
 
 const UpdateUser=()=>{
     const editindex=user.findIndex(prsn=>prsn.Id===Id)
 const EditedData={
-  Id,
+    Id,
     Name,
     Sex,
     Batch,
